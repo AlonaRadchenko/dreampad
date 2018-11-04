@@ -15,11 +15,17 @@
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 export default {
   computed: {
     ...mapState(['dreams']),
 
+  },
+  mounted() {
+    this.actionLoadDreams();
+  },
+  methods:{
+    ...mapActions(['actionLoadDreams'])
   }
 }
 </script>

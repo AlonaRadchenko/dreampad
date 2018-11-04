@@ -27,7 +27,7 @@
       </label>
       <label>
         How strong do you want it?
-        <b-form-input type="number" v-model="dreamVolume"
+        <b-form-input type="number" v-model="volume"
         placeholder="Enter value from 1 to 10" min="1" max="10"></b-form-input>
       </label>
 
@@ -84,7 +84,7 @@ export default {
         { text: 'No', value: 'no' },
         
       ],
-      dreamVolume: 5,
+      volume: 5,
       
     }
   },
@@ -94,12 +94,14 @@ saveDream(){
   const dream={
     description: this.description,
     when: this.when,
-    dreamVolume: this.dreamVolume,
+    volume: this.volume,
     share: this.share
 
   };
-  this.actionSaveDream(dream);
-  this.$router.push({name:'list'})
+  this.actionSaveDream(dream).then(() => {
+     this.$router.push({name:'list'});
+  } );
+ 
  
 }
 }
